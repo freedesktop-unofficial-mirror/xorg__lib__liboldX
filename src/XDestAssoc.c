@@ -24,6 +24,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/oldX/XDestAssoc.c,v 1.4 2001/12/14 19:57:02 dawes Exp $ */
 
 #include "Xlibint.h"
 #include "X10.h"
@@ -32,6 +33,7 @@ in this Software without prior written authorization from The Open Group.
  * XDestroyAssocTable - Destroy (free the memory associated with)
  * an XAssocTable.  
  */
+int
 XDestroyAssocTable(table)
 	register XAssocTable *table;
 {
@@ -57,5 +59,6 @@ XDestroyAssocTable(table)
 
 	/* Free the table. */
 	Xfree((char *)table);
+	return 0;
 }
 

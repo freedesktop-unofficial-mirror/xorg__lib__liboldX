@@ -24,6 +24,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/oldX/XDelAssoc.c,v 1.4 2001/12/14 19:57:02 dawes Exp $ */
 
 #include "Xlibint.h"
 #include "X10.h"
@@ -33,6 +34,7 @@ in this Software without prior written authorization from The Open Group.
  * an XId.  An association may be removed only once.  Redundant
  * deletes are meaningless (but cause no problems).
  */
+int
 XDeleteAssoc(dpy, table, x_id)
         register Display *dpy;
 	register XAssocTable *table;
@@ -61,7 +63,7 @@ XDeleteAssoc(dpy, table, x_id)
 				Entry->prev->next = Entry->next;
 				Entry->next->prev = Entry->prev;
 				Xfree((char *)Entry);
-				return;
+				return 0;
 			}
 			/* Oops, identical XId's on different displays! */
 			continue;
@@ -69,10 +71,9 @@ XDeleteAssoc(dpy, table, x_id)
 		if (Entry->x_id > x_id) {
 			/* We have gone past where it should be. */
 			/* It is apparently not in the table. */
-			return;
+			return 0;
 		}
 	}
 	/* It is apparently not in the table. */
-	return;
+	return 0;
 }
-
