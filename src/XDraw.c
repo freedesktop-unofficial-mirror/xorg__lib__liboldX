@@ -26,7 +26,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86$ */
+/* $XFree86: xc/lib/oldX/XDraw.c,v 1.5 2001/12/14 19:57:02 dawes Exp $ */
 
 #include "Xlibint.h"
 #include "Xlib.h"
