@@ -24,6 +24,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/oldX/XMakeAssoc.c,v 1.4 2001/12/14 19:57:03 dawes Exp $ */
 
 #include "Xlibint.h"
 #include "X10.h"
@@ -34,6 +35,7 @@ in this Software without prior written authorization from The Open Group.
  * meaningless (but cause no problems).  The queue in each association
  * bucket is sorted (lowest XId to highest XId).
  */
+int
 XMakeAssoc(dpy, table, x_id, data)
 	register Display *dpy;
 	register XAssocTable *table;
@@ -71,7 +73,7 @@ XMakeAssoc(dpy, table, x_id, data)
 					/* entry with this XId and Display, */
 					/* reset its data value and return. */
 					Entry->data = data;
-					return;
+					return 0;
 				}
 				/* We found an association with the right */
 				/* id but the wrong display! */
@@ -103,5 +105,6 @@ XMakeAssoc(dpy, table, x_id, data)
 	new_entry->next = Entry;
 	Entry->prev->next = new_entry;
 	Entry->prev = new_entry;
+	return 0;
 }
 

@@ -26,6 +26,7 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
+/* $XFree86: xc/lib/oldX/XDraw.c,v 1.5 2001/12/14 19:57:02 dawes Exp $ */
 
 #include "Xlibint.h"
 #include "Xlib.h"
@@ -33,9 +34,7 @@ in this Software without prior written authorization from The Open Group.
 
 #define OK_RETURN 1
 #define ERR_RETURN 0
-#ifndef NULL
-#define NULL 0
-#endif
+#include <stddef.h>
 
 /*
 
@@ -200,7 +199,7 @@ static short segtable[] = {  10,  3, 56,	/* pl <= 10, 3 segments     */
  *
  */
 							 
-static vertices_converter(pathaddr, pathcount, ppathaddr_new, newpathcnt)
+static int vertices_converter(pathaddr, pathcount, ppathaddr_new, newpathcnt)
   Vertex  *pathaddr;	    /* address of original path list             */
   int	  pathcount;        /* number of points in original path list    */
   Vertex  **ppathaddr_new;  /* ptr to addr of new path list      */
