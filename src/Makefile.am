@@ -12,6 +12,7 @@ INCLUDES = -I$(top_srcdir)/include/X11
 
 
 liboldX_la_LIBADD = @DEP_LIBS@
+liboldX_la_CFLAGS = @DEP_CFLAGS@
 
 liboldX_la_LDFLAGS = -version-info 7:0:0 -no-undefined
 
