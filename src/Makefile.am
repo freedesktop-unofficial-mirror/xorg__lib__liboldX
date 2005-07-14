@@ -1,6 +1,6 @@
 lib_LTLIBRARIES = liboldX.la
 
-liboldX_la_SOURCES = \ 
+liboldX_la_SOURCES = \
          XCrAssoc.c \
          XDelAssoc.c \
          XDestAssoc.c \
