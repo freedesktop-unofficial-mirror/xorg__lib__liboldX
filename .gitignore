@@ -1,3 +1,5 @@
+.deps
+.libs
 aclocal.m4
 autom4te.cache
 compile
@@ -19,3 +21,9 @@ mkinstalldirs
 oldx.pc
 stamp-h1
 *~
+*.o
+*.la
+*.lo
+liboldX-*.tar.*
+ChangeLog
+tags

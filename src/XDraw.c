@@ -202,11 +202,11 @@ static short segtable[] = {  10,  3, 56,	/* pl <= 10, 3 segments     */
  *
  */
 							 
-static int vertices_converter(pathaddr, pathcount, ppathaddr_new, newpathcnt)
-  Vertex  *pathaddr;	    /* address of original path list             */
-  int	  pathcount;        /* number of points in original path list    */
-  Vertex  **ppathaddr_new;  /* ptr to addr of new path list      */
-  int     *newpathcnt;	    /* ptr to new number of pts in path list */
+static int vertices_converter(
+  Vertex  *pathaddr,	    /* address of original path list             */
+  int	  pathcount,        /* number of points in original path list    */
+  Vertex  **ppathaddr_new,  /* ptr to addr of new path list      */
+  int     *newpathcnt)	    /* ptr to new number of pts in path list */
 {
   int p0x, p0y;   	    /* coordinates of curve's predecessor point  */
   int p1x, p1y;   	    /* coordinates of curve's starting point     */
@@ -266,7 +266,7 @@ static int vertices_converter(pathaddr, pathcount, ppathaddr_new, newpathcnt)
       {
 	path_coord_list_segs = max (200, pathcount);
 	path_coord_list_bytes = path_coord_list_segs * sizeof(Vertex);
-	if ((pathaddr_coords = (Vertex *)Xmalloc(path_coord_list_bytes)) != 0)
+	if ((pathaddr_coords = (Vertex *)Xmalloc(path_coord_list_bytes)))
 	  p_coord_path = pathaddr_coords;
 	else
 	  return(ERR_RETURN);
@@ -280,7 +280,7 @@ static int vertices_converter(pathaddr, pathcount, ppathaddr_new, newpathcnt)
 	    Xfree( pathaddr_coords);
 	    path_coord_list_segs = pathcount;
 	    path_coord_list_bytes = path_coord_list_segs * sizeof(Vertex);
-	    if ((pathaddr_coords =(Vertex *)Xmalloc(path_coord_list_bytes)) !=0)
+	    if ((pathaddr_coords =(Vertex *)Xmalloc(path_coord_list_bytes)))
 	      p_coord_path = pathaddr_coords;
 	    else
 	      return(ERR_RETURN);
@@ -341,7 +341,7 @@ static int vertices_converter(pathaddr, pathcount, ppathaddr_new, newpathcnt)
 	Xfree( pathaddr_new );
       pathlist_segs = pathcount;
       pathlist_bytes = pathcount * sizeof(Vertex);
-      if ((pathaddr_new = (Vertex *)Xmalloc(pathlist_bytes)) != 0)
+      if ((pathaddr_new = (Vertex *)Xmalloc(pathlist_bytes)))
 	pnewpath = pathaddr_new;
       else
 	return(ERR_RETURN);
@@ -476,7 +476,7 @@ static int vertices_converter(pathaddr, pathcount, ppathaddr_new, newpathcnt)
 		    pathlist_segs *= 2;
 		    pathlist_bytes *= 2;
 		    if ((pathaddr_new = (Vertex *)Xrealloc(pathaddr_new, 
-							 pathlist_bytes)) != 0)
+							   pathlist_bytes)))
 		      pnewpath = pathaddr_new + newpathcount;
 	    	    else
 		      return(ERR_RETURN);
@@ -531,7 +531,7 @@ static int vertices_converter(pathaddr, pathcount, ppathaddr_new, newpathcnt)
 	    pathlist_bytes *= 2;
 	    pathlist_segs *= 2;
 	    if ((pathaddr_new = (Vertex *)Xrealloc(pathaddr_new, 
-						 pathlist_bytes)) != 0)
+						   pathlist_bytes)))
 	      pnewpath = pathaddr_new + newpathcount;
     	    else
 	      return(ERR_RETURN);
@@ -554,12 +554,7 @@ static int vertices_converter(pathaddr, pathcount, ppathaddr_new, newpathcnt)
 static XPoint *XDraw_points = NULL;    /* Buffer to hold list of points for */
 static int    point_count = 0;         /* use in calling XDrawLines         */
 
-Status XDraw (dpy, d, gc, vlist, vcount)
-    register Display *dpy;
-    Drawable d;
-    GC gc;
-    Vertex *vlist;
-    int vcount;
+Status XDraw (Display *dpy, Drawable d, GC gc, Vertex *vlist, int vcount)
 {
   Vertex *newvlist;
   int newvcount;
@@ -631,12 +626,7 @@ Status XDraw (dpy, d, gc, vlist, vcount)
   return(OK_RETURN);
 }
 
-Status XDrawFilled (dpy, d, gc, vlist, vcount)
-    register Display *dpy;
-    Drawable d;
-    GC gc;
-    Vertex *vlist;
-    int vcount;
+Status XDrawFilled (Display *dpy, Drawable d, GC gc, Vertex *vlist, int vcount)
 {
   Vertex *newvlist;
   int newvcount;

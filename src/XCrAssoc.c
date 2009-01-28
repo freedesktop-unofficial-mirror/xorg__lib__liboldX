@@ -38,8 +38,7 @@ in this Software without prior written authorization from The Open Group.
  * buckets is 8.  If there is an error creating the XAssocTable, a NULL
  * pointer is returned.
  */
-XAssocTable *XCreateAssocTable(size)
-	register int size;		/* Desired size of the table. */
+XAssocTable *XCreateAssocTable(int size)
 {
 	register XAssocTable *table;	/* XAssocTable to be initialized. */
 	register XAssoc *buckets;	/* Pointer to the first bucket in */

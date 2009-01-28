@@ -37,8 +37,7 @@ in this Software without prior written authorization from The Open Group.
  * an XAssocTable.  
  */
 int
-XDestroyAssocTable(table)
-	register XAssocTable *table;
+XDestroyAssocTable(XAssocTable *table)
 {
 	register int i;
 	register XAssoc *bucket;

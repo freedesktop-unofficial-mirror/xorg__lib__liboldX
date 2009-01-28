@@ -83,7 +83,16 @@ typedef struct {
     int size;			/* Table size (number of buckets). */
 } XAssocTable;
 
-XAssocTable *XCreateAssocTable();
-char *XLookUpAssoc();
+extern Status XDraw(Display *dpy, Drawable d, GC gc,
+		    Vertex *vlist, int vcount);
+extern Status XDrawFilled(Display *dpy, Drawable d, GC gc,
+			  Vertex *vlist, int vcount);
+
+extern XAssocTable *XCreateAssocTable(int size);
+extern int XDeleteAssoc(Display *dpy, XAssocTable *table, XID x_id);
+extern int XDestroyAssocTable(XAssocTable *table);
+extern char *XLookUpAssoc(Display *dpy, XAssocTable *table, XID x_id);
+extern int XMakeAssoc(Display *dpy, XAssocTable *table, XID x_id,
+		      XPointer data);
 
 #endif /* _X10_H_ */

@@ -38,10 +38,7 @@ in this Software without prior written authorization from The Open Group.
  * in the table the routine will return a NULL pointer.  All XId's are relative
  * to the currently active Display.
  */
-XPointer XLookUpAssoc(dpy, table, x_id)
-        register Display *dpy;
-	register XAssocTable *table;	/* XAssocTable to search in. */
-	register XID x_id;			/* XId to search for. */
+XPointer XLookUpAssoc(Display *dpy, XAssocTable *table, XID x_id)
 {
 	int hash;
 	register XAssoc *bucket;

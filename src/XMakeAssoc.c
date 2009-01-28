@@ -39,11 +39,7 @@ in this Software without prior written authorization from The Open Group.
  * bucket is sorted (lowest XId to highest XId).
  */
 int
-XMakeAssoc(dpy, table, x_id, data)
-	register Display *dpy;
-	register XAssocTable *table;
-	register XID x_id;
-	register XPointer data;
+XMakeAssoc(Display *dpy, XAssocTable *table, XID x_id, XPointer data)
 {
 	int hash;
 	register XAssoc *bucket;
